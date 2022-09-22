@@ -47,12 +47,3 @@ https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-
 
 useful node modules
 https://leanylabs.com/blog/npm-packages-for-nodejs/
-
-## Lab 1 - Create an express.js application
-In this lab you will create a node / express web application from scratch by generating a skeleton application.
-
-Prerequisites: node and nvm installed
-
-From the terminal, in an empty folder, type:
-
-
