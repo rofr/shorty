@@ -13,7 +13,7 @@ export class ScratchStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     
-    const numUsers = 5;
+    const numUsers = 3;
     for(var i = 0; i <numUsers; i++) {
       const user = new User(this, 'dev-' + i, { 
         password: SecretValue.unsafePlainText('Ekerum-ServerlessLab-2022-' + i),
