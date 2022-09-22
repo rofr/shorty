@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <!-- Uses remarkjs -->
+    <!-- open this file in a browser to view the slides -->
+    <textarea id="source">
+
+class: center, middle
+
+# NodeJS on AWS
+Robert Friberg
+---
+
+# Agenda
+
+* Build a simple app with NodeJS and ExpressJS
+* AWS overview
+* DynamoDB vs RDBMS comparison
+* Deploy app to to Lambda and API Gateway
+
+---
+
+# Javascript in the web browser
+* Runs in a "secure" sandbox
+* Document Object Model (DOM), document, window, navigator, etc
+* Demo browser console (F12 in chrome)
+
+---
+
+# NodeJS
+
+* Independent javascript runtime
+* Install from nodejs.org or use nvm
+* Server, desktop, docker, AWS Lambda
+
+---
+
+# NodeJS Lab/demo
+
+* Install nvm and node or just node
+* Test `node --version`
+* Test `npm --version`
+* Start interactive, try some statements
+* Create and run script hello.js with console.log()
+
+---
+
+# NPM - Node Package Manager
+* npmjs.org
+* Similar to nuget, maven
+* node_modules folder
+* Lab/demo - install and use a package
+
+---
+
+# ExpressJS
+* Most popular MVC framework for nodejs
+* View engines - Jade is now PUG
+
+---
+
+# ExpressJS Lab/demo
+* Follow "Getting Started" at expressjs.com
+* Installing, Hello World, Generator and Basic Routing
+
+---
+# Shorty
+* Simple demo application - url shortener like tinyurl or bit.ly
+* `git clone https://github.com/rofr/shorty`
+* Run the express app in the vanilla-express folder
+* Examine the code / make some tweaks
+---
+
+# DynamoDB
+* Key/Value store
+* Key is a string or number
+* Value is a json document
+* Simple, fast, scalable
+* Eventually consistent
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

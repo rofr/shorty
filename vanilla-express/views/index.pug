@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(method='post')
+    div.mb-3
+      label.form-label(for="alias") Alias 
+      input.form-control(name='alias')
+    div.mb-3
+      label.form-label(for="url") Url
+      input.form-control(name='url')
+    button.form-control.btn.btn-primary.mb-3(type='submit') Create short link
+  
+  h1 Links
+  p showing up to 100 links
+  table.table.table-striped
+    thead
+      tr
+        th
+          b Alias 
+        th
+          b Url 
+        th
+          b Clicks
+    tbody
+    each item in items
+      tr
+        td
+         a(href="/" + item.alias, target='_blank')= item.alias
+        td
+          a(href=item.url)= item.url
+        td= item.clicks
+
