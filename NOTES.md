@@ -16,26 +16,8 @@ $ nvm use <version>
 $ nvm ls
 ```
 
-
-## Topics
-* Intro - presentation, course, robert
-* AWS intro + demo, cloud benefits, automation, api, regions
-
-* Javascript/Node
- - tools - npm, node, nvm
- - Express
- - Lab: Building and running locally without db (in memory)
-
-Infrastructure as Code
-- CDK
-- Terraform
-- Pulumi
-- CloudFormation
-
-* Serverless
-
 https://docs.aws.amazon.com/cdk/api/v2/
-
+https://npmjs.org/
 https://expressjs.com/
 
 https://pugjs.org/api/getting-started.html
@@ -47,3 +29,8 @@ https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-
 
 useful node modules
 https://leanylabs.com/blog/npm-packages-for-nodejs/
+
+## DynamoDb
+https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.WriteItem.html
+https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-dynamodb/index.html

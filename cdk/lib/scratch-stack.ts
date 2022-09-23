@@ -42,7 +42,7 @@ export class ScratchStack extends cdk.Stack {
         tableName: 'Shorty-' + i,
         removalPolicy: RemovalPolicy.DESTROY,
         partitionKey: {
-          name: "Alias",
+          name: "alias",
           type: AttributeType.STRING
         },
       })

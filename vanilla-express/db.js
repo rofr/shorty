@@ -1,49 +1,74 @@
 var debug = require('debug')('vanilla-express:db');
 
-debug('db loading...')
 
-let items = 
-    {
-        'cdk-docs' : {
-            'url' : 'https://docs.aws.amazon.com/cdk/api/v2/',
-            'clicks' : 42
-        },
-        'col' : {
-            'url' : 'https://www.khanacademy.org/science/ap-biology/chemistry-of-life',
-            'clicks' : 1
-        }
-    }
+const AWS = require("aws-sdk") // Or use `import` syntax for Typescript and newer ES versions
+
+process.env.AWS_PROFILE='devrex'
+
+
+
+const documentClient = new AWS.DynamoDB.DocumentClient({
+    region: 'eu-west-1'
+})
+
+const tableName = "Shorty-0"
+
+// https://dynobase.dev/dynamodb-nodejs/
+
+
 
 async function add(alias, url) {
-    if (items[alias]) return false
-    items[alias] = {url, clicks:0}
-    return true
-}
+    try {
+        let response = await documentClient.put({
+            TableName: tableName,
+            Item : {
+                alias,
+                url,
+                clicks: 0
+            },
+            ConditionExpression: 'attribute_not_exists(alias)'
+        }).promise()
+        return true        
+    } catch (error) {
+        console.error(error)
+    }
 
-async function remove(alias) {
-    return delete items[alias]
+
 }
 
 async function click(alias) {
-    let item = items[alias]
-    if (item) {
-        item.clicks++
-        return item.url
+    try {
+        let res = await documentClient.update({
+            TableName: tableName,
+            Key: {
+            alias
+            },
+            UpdateExpression: 'set clicks = clicks + :one',
+            ExpressionAttributeValues:  { ':one': 1},
+            ReturnValues: 'ALL_OLD'
+        })
+        .promise()
+        console.log(res)
+        return res.Attributes.url        
+    } catch (error) {
+        console.error(error)
+        return null
     }
-    return null
+
 }
 
 async function find(pattern) {
-    let result = []
-    const max = 100
-    for(alias in items) {
-        if (alias.indexOf(pattern) >= 0) result.push({...items[alias],alias})
-        if (result.length > max) break
-    }
-    return result
+  var res = await documentClient.scan({
+    TableName: tableName,
+    FilterExpression: "contains(alias, :alias)",
+    ExpressionAttributeValues: {
+      ":alias": pattern,
+    },
+}).promise()
+  return res.Items;
 
 }
 
 module.exports = {
-    add, remove, click, find
+    add, click, find
 }
