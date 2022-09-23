@@ -43,3 +43,15 @@ https://docs.aws.amazon.com/cli/index.html
 
 https://www.freecodecamp.org/news/express-js-and-aws-lambda-a-serverless-love-story-7c77ba0eaa35/
 https://www.npmjs.com/package/aws-serverless-express
+
+
+
+eu-west-1 Ireland
+us-east-1 Virginia
+eu-central-1 Frankfurt
+eu-north-1 Stockholm
+
+
+eu-north-1a
+eu-north-1b
+eu-north-1c

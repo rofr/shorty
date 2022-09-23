@@ -1,29 +1,63 @@
 var debug = require('debug')('vanilla-express:db');
 
-//todo: add aws sdk npm package and require
-
-process.env.AWS_PROFILE='devrex'
-
-
-//todo: create a dynamodb document client
-
-//todo: find table name
-const tableName = ""
-
 // https://dynobase.dev/dynamodb-nodejs/
+const AWS = require("aws-sdk")
+
+const documentClient = new AWS.DynamoDB.DocumentClient({
+    region: "eu-west-1",
+})
+
+const tableName = process.env.TABLE_NAME
+
 
 
 
 async function add(alias, url) {
-//todo: call put on the documentClient
+    try {
+        let response = await documentClient.put({
+            TableName: tableName,
+            Item: {
+                alias,
+                url,
+                clicks: 0
+            },
+            ConditionExpression: 'attribute_not_exists(alias)'
+        }).promise()
+        return true
+    } catch (error) {
+        console.error(error)
+    }
 }
 
 async function click(alias) {
-//todo: call update on the documentClient
+    try {
+        let res = await documentClient.update({
+            TableName: tableName,
+            Key: {
+                alias
+            },
+            UpdateExpression: 'set clicks = clicks + :one',
+            ExpressionAttributeValues: { ':one': 1 },
+            ReturnValues: 'ALL_OLD'
+        })
+            .promise()
+        console.log(res)
+        return res.Attributes.url
+    } catch (error) {
+        console.error(error)
+        return null
+    }
 }
 
 async function find(pattern) {
-//todo: call scan on the documentClient
+    var res = await documentClient.scan({
+        TableName: tableName,
+        FilterExpression: "contains(alias, :alias)",
+        ExpressionAttributeValues: {
+          ":alias": pattern,
+        },
+    }).promise()
+      return res.Items;
 }
 
 module.exports = {
