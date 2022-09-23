@@ -34,3 +34,12 @@ https://leanylabs.com/blog/npm-packages-for-nodejs/
 https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.WriteItem.html
 https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-dynamodb/index.html
+
+
+https://dynobase.dev/dynamodb-nodejs/
+
+https://docs.aws.amazon.com/cli/index.html
+
+
+https://www.freecodecamp.org/news/express-js-and-aws-lambda-a-serverless-love-story-7c77ba0eaa35/
+https://www.npmjs.com/package/aws-serverless-express

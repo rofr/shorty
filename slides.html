@@ -87,14 +87,95 @@ Robert Friberg
 * Examine the code / make some tweaks
 ---
 
+# Day 2
+* Recap
+* AWS Introduction
+* DynamoDB
+* Lambda
+* Api Gateway
+
+---
+# Recap
+* Javascript
+* Node
+* npm
+* express
+---
+# AWS Introduction
+* PPT Slides from AWS Discovery Day
+* Demo/lab: AWS Console create api key, configure aws CLI
+---
 # DynamoDB
-* Key/Value store
+* Distributed key/value store
 * Key is a string or number
 * Value is a json document
 * Simple, fast, scalable
 * Eventually consistent
+---
+# Relational pros
+* Powerful queries with SQL
+* ACID transactions (Atomic, Consistent, Isolated, Durable)
+* Strongly typed schema
+* Stored procedures, views
+---
+# DynamoDB pros
+* Scales horizontally (# of items, request rate) 
+* Unlimited storage
+* Fast operations < 10 ms (except scan)
+---
+# CAP theorem
+* Consistency
+* Availability
+* Partition Tolerance
+When there is a network partition, a system can be consistent or available, but not both.
+---
+# Lab / demo
+Implement data access code in shorty
+---
+# Hosting shorty on AWS
+* VMs behind a load balancer ($$$)
+* ECS - Elastic Container Service ($$$)
+* EKS - Kubernetes ($$$)
+* ECS/EKS Fargate (serverless)
+* AppRunner
+* Elastic Beanstalk
+* **API Gateway / Lambda**
+* Cloudfront/ S3/ API Gateway / Lambda
+---
+# API Gateway
+* Serverless http/websockets
+* Routing to lambda, ec2, 
+* Authorizers
+* API keys
+* Throttling
+* documentation (openapi specification)
+* Generate client
+* Versions/stages (staging, prod)
+* DEMO: api gateway walkthrough
+---
+# AWS Lambda
+* Serverless compute
+* Pay only when the function is executing
+* Language runtimes: go, ruby, node, c#, java, python, ?
+* Event driven: API Gateway request, s3, dynamo, SQS, SNS
+* DEMO: create a function
+---
+# Shorty problem
+* Shorty is built with express.
+* Express listens for http on a tcp socket
+* API Gateway listens for http and passes event to a function
+* Solution: serverless-express npm package
+---
+# API Gateway Proxy Integration + Single Lambda
+* No routing, pass everything on to a single Lambda
+* Express integration
+* Only one Lambda to manage
+* Fewer cold starts
+---
+# Final lab / demo
+* Deploy shorty to lambda api gateway!
 
-    </textarea>
+</textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
     <script>
